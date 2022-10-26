@@ -1,12 +1,14 @@
 import React from 'react';
-
+import ExerciseItem from './ExerciseItem';
+import './ExercisesList.css';
 
 function ExercisesList(props) {
     if (props.exercises.length === 0) return null;
   return (
-    <ul>
-        {props.exercises.map( exercise => <li key={exercise.id}>exercise.title</li>)}
-    </ul>
+    <div className='exercises-list'>
+        {props.exercises.map( exercise => 
+          <ExerciseItem key = {exercise.id} exercise = { exercise } />)}
+    </div>
   )
 }
 
