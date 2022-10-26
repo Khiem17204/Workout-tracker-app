@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import ExercisesList from '../components/ExercisesList';
 
 const HomePage = () => {
   const [ exercises, setExercises ] = useState([]);
@@ -10,13 +11,15 @@ const HomePage = () => {
             console.log('here are the exercise..',fetchedExercises);
             setExercises(fetchedExercises);
         } catch (error) {
-            
+            console.log(error);
         }
     }
     fetchExercises();
   }, [])
   return (
-    <div>HomePage</div>
+    <div>
+      <ExercisesList exercises={exercises}/>
+    </div>
   );
 };
 
