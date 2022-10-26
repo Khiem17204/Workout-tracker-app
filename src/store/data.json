@@ -1,0 +1,10 @@
+{
+    "exercises": [
+        {
+            "title": "Pushups",
+            "details": "Pushups are good for health",
+            "complete": false,
+            "id": 119
+        }
+    ]
+}
