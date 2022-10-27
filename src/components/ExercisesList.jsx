@@ -7,7 +7,7 @@ function ExercisesList(props) {
   return (
     <div className='exercises-list'>
         {props.exercises.map( exercise => 
-          <ExerciseItem key = {exercise.id} exercise = { exercise } />)}
+          <ExerciseItem onDeleteExercise = {props.onDeleteExercise} key = {exercise.id} exercise = { exercise } />)}
     </div>
   )
 }

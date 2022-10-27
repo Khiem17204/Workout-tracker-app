@@ -15,10 +15,16 @@ const HomePage = () => {
         }
     }
     fetchExercises();
-  }, [])
+  }, []);
+
+  const deleteExerciseHandler = (id) => {
+    const patchedExercises = exercises.filter(exercise => exercise.id !== id);
+    setExercises(patchedExercises);
+  }
+
   return (
     <div>
-      <ExercisesList exercises={exercises}/>
+      <ExercisesList onDeleteExercise={deleteExerciseHandler} exercises={exercises}/>
     </div>
   );
 };
