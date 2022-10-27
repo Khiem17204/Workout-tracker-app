@@ -22,9 +22,22 @@ const HomePage = () => {
     setExercises(patchedExercises);
   }
 
+  const toggleExerciseCompletionHandler = id => {
+    console.log('id is', id);
+    const clonedExercises = [...exercises];
+    const clickedExerciseIndex = clonedExercises.findIndex(exercise => exercise.id === id);
+    const clickedExercise = clonedExercises[clickedExerciseIndex];
+    clickedExercise.complete = !clickedExercise.complete;
+    setExercises(clonedExercises);
+  }
+
   return (
     <div>
-      <ExercisesList onDeleteExercise={deleteExerciseHandler} exercises={exercises}/>
+      <ExercisesList 
+      onToggleExercise={toggleExerciseCompletionHandler}
+      onDeleteExercise={deleteExerciseHandler} 
+      exercises={exercises}
+      />
     </div>
   );
 };
