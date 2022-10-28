@@ -6,11 +6,11 @@ A personal project using React and JSON local server to store, update, and delet
 
 After installing nodejs, you should install npm onto your local, then run this in your terminal 
 
-####npm install -g json-server
+#### `npm install -g json-server`
 
 then you should run(you can change the port, but I have used the port 3111 in my project) 
 
-####json-server --watch src/store/data.json --port=3111**
+#### `json-server --watch src/store/data.json --port=3111`
 
 And then you need to run React App
 
