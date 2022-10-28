@@ -32,7 +32,7 @@ function ExerciseItem(props) {
     <div className = {classes.join(' ')}>
         <div className='actions'>
             <h4>{props.exercise.title}</h4>
-            <div className='button'>
+            <div className='buttons'>
               <button onClick={performExerciseDeletion}>Delete</button>
               <button onClick={performExerciseToggle}>Toggle</button>
             </div>
