@@ -1,8 +1,14 @@
 import React, { useState, useEffect} from 'react';
+import BaseFilter from '../components/BaseFilter';
 import ExercisesList from '../components/ExercisesList';
 
 const HomePage = () => {
   const [ exercises, setExercises ] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('all');
+
+  const updateFilterHandler = (newFilter) => {
+    setCurrentFilter(newFilter);
+  }
   useEffect(() => {
     async function fetchExercises(){
         try {
@@ -30,14 +36,30 @@ const HomePage = () => {
     clickedExercise.complete = !clickedExercise.complete;
     setExercises(clonedExercises);
   }
-
-  return (
-    <div>
-      <ExercisesList 
+  let jsx = (
+    <ExercisesList 
       onToggleExercise={toggleExerciseCompletionHandler}
       onDeleteExercise={deleteExerciseHandler} 
       exercises={exercises}
       />
+  );
+  if (currentFilter==='completed'){
+    jsx = <ExercisesList 
+      onToggleExercise={toggleExerciseCompletionHandler}
+      onDeleteExercise={deleteExerciseHandler} 
+      exercises={exercises.filter(exercise => exercise.complete)}
+      />
+  }else if (currentFilter==='pending'){
+    jsx = <ExercisesList 
+      onToggleExercise={toggleExerciseCompletionHandler}
+      onDeleteExercise={deleteExerciseHandler} 
+      exercises={exercises.filter(exercise => !exercise.complete)}
+      />
+  }
+  return (
+    <div>
+      <BaseFilter onUpdate={updateFilterHandler} current={currentFilter}/>
+      {jsx}
     </div>
   );
 };
